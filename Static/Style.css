@@ -1,0 +1,5 @@
+body { font-family: sans-serif; background: #f4f4f4; }
+.chat-window { width: 500px; margin: 50px auto; background: #fff; padding: 10px; border-radius: 5px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+#chat-box { height: 300px; overflow-y: auto; margin-bottom: 10px; }
+.user { text-align: right; background: #cef; margin: 5px; padding: 5px; border-radius: 5px; }
+.agent { text-align: left; background: #efe; margin: 5px; padding: 5px; border-radius: 5px; }
