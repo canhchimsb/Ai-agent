@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AI Distributed Chat</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="chat-window">
+    <div id="chat-box"></div>
+    <input id="user-input" placeholder="Nhập câu hỏi..." autocomplete="off"/>
+    <button onclick="send()">Gửi</button>
+  </div>
+  <script>
+    async function send() {
+      const text = document.getElementById("user-input").value;
+      if (!text) return;
+      document.getElementById("chat-box").innerHTML += `<div class="user">Bạn: ${text}</div>`;
+      const res = await fetch('/task', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({task:'question', data:text})
+      });
+      const data = await res.json();
+      document.getElementById("chat-box").innerHTML += `<div class="agent">Agent: ${data.response}</div>`;
+      document.getElementById("user-input").value = '';
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+  </script>
+</body>
+</html>
